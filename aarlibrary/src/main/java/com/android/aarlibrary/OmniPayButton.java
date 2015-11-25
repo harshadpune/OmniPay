@@ -40,7 +40,9 @@ public class OmniPayButton extends Button implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(appContext, "Aar Call Successful...", Toast.LENGTH_LONG).show();
+        OmniPayActivity omniPayActivity = new OmniPayActivity(appContext);
+        omniPayActivity.showCustomDialog();
+
     }
 
     public void init(){

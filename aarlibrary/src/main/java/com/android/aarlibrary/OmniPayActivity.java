@@ -1,12 +1,24 @@
 package com.android.aarlibrary;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.preference.DialogPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class OmniPayActivity extends ActionBarActivity {
+
+
+    private final Context appContext;
+
+    public OmniPayActivity(Context context){
+        this.appContext = context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +47,24 @@ public class OmniPayActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showCustomDialog(){
+        new AlertDialog.Builder(appContext)
+                .setTitle("Payment Options")
+                .setMessage("Multiple Payment Options are available here")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+        .show();
     }
 }
