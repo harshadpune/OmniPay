@@ -3,6 +3,7 @@ package com.android.aarlibrary;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.preference.DialogPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,16 +15,18 @@ import android.widget.Toast;
 public class OmniPayActivity extends ActionBarActivity {
 
 
-    private final Context appContext;
+//    private final Context appContext;
+//
+    public OmniPayActivity(){
 
-    public OmniPayActivity(Context context){
-        this.appContext = context;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_omni_pay);
+//        setContentView(R.layout.activity_omni_pay);
+        showCustomDialog();
+
     }
 
 
@@ -50,21 +53,25 @@ public class OmniPayActivity extends ActionBarActivity {
     }
 
     public void showCustomDialog(){
-        new AlertDialog.Builder(appContext)
-                .setTitle("Payment Options")
-                .setMessage("Multiple Payment Options are available here")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-        .show();
+//        new AlertDialog.Builder(OmniPayButton.appContext)
+//                .setTitle("Payment Options")
+//                .setMessage("Multiple Payment Options are available here")
+//                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                        Intent intentPayU = new Intent(OmniPayButton.appContext,PayUMoney.class);
+//                        startActivity(intentPayU);
+//                    }
+//                })
+//                .setNegativeButton("No", new DialogInterface.OnClickListener(){
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                })
+//        .show();
+
+
     }
 }

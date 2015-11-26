@@ -1,6 +1,7 @@
 package com.android.aarlibrary;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,8 @@ import android.widget.Toast;
 public class OmniPayButton extends Button implements View.OnClickListener {
 
 
-    private Context appContext;
+    public static Context appContext;
+    private OnOmniPayClickListener listener;
 
     public OmniPayButton(Context context) {
         super(context);
@@ -40,13 +42,17 @@ public class OmniPayButton extends Button implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        OmniPayActivity omniPayActivity = new OmniPayActivity(appContext);
-        omniPayActivity.showCustomDialog();
-
+        CustomDialog customDialog = new CustomDialog(appContext);
+        customDialog.show();
+        listener.setPaymentDetails();
     }
 
     public void init(){
         this.setOnClickListener(this);
         this.setText("OmniPay");
+    }
+
+    public void setOnOmniPayClickListener(OnOmniPayClickListener listener){
+        this.listener = listener;
     }
 }
