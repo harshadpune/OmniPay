@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -62,6 +63,7 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         if (i == R.id.ivPayU) {
             Intent intentPayU = new Intent(appContext,PayUMoney.class);
             appContext.startActivity(intentPayU);
+            Log.d("TAG", "ID="+PaymentHandler.getInstance().getPaymentId()+" Amount="+PaymentHandler.getInstance().getPaymentAmount());
             dismiss();
         }
 
