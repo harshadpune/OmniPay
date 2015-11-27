@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.android.aarlibrary.nfcreader.TagViewer;
+
 /**
  * Created by HARSHAD on 26/11/2015.
  */
@@ -68,7 +70,9 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         }
 
         if(i == R.id.ivPayPal){
-
+            Intent tagViewer = new Intent(appContext, TagViewer.class);
+            appContext.startActivity(tagViewer);
+            dismiss();
         }
     }
 }
