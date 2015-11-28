@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="splash_marquee_text">For all pay there is only one pay, \u0020\u0020Customer need to install only one app, \u0020\u0020Merchants need not to go-to 3rd party payment gateway, \u0020\u0020Everything will done by Omnipay.</string>
+    <string name="splash_omnipay">Omni-pay</string>
 </resources>
