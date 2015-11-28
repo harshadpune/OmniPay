@@ -28,8 +28,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
-            android:text="Scan your Tag here!!!!"
-             />
+            android:text="Scan your card here!!!!"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dip"
+            android:textStyle="bold"
+            android:textSize="20dip" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -39,12 +42,14 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="50dip"
+                android:layout_margin="20dip"
                 android:paddingTop="20dip"
                 android:paddingBottom="20dip"
-                android:background="#bdd7f4"
+                android:background="@drawable/square_background"
                 android:paddingLeft="20dip"
-                android:paddingRight="20dip">
+                android:paddingRight="20dip"
+                android:visibility="gone"
+                android:id="@+id/llCard">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -53,15 +58,19 @@
                     android:id="@+id/tvBankName"
                     android:layout_gravity="right"
                     android:layout_marginRight="30dip"
-                    android:textSize="18dip" />
+                    android:textSize="18dip"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="XXXX XXXX XXXX XXXX"
                     android:id="@+id/tvCardNumber"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="40dip" />
+                    android:layout_marginTop="20dip"
+                    android:textStyle="bold"
+                    android:textSize="20dip"
+                    android:layout_gravity="right"
+                    android:gravity="center_horizontal" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -80,7 +89,9 @@
                         android:layout_height="wrap_content"
                         android:text="MM/YY"
                         android:id="@+id/tvExpDt"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
 
                 <TextView
@@ -88,8 +99,46 @@
                     android:layout_height="wrap_content"
                     android:text="Name"
                     android:id="@+id/tvCardName"
-                    android:layout_marginTop="10dip" />
+                    android:layout_marginTop="10dip"
+                    android:textStyle="bold"
+                    android:textSize="16dip" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CVV"
+                        android:id="@+id/tvCvvLabel" />
+
+                    <EditText
+                        android:layout_width="60dip"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etCvv"
+                        android:layout_marginLeft="10dip" />
+
+                </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay"
+                android:id="@+id/btnPay"
+                android:layout_below="@+id/llCard"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"/>
         </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_contactless"
+            android:background="@drawable/contactless_icon"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dip" />
     </LinearLayout>
 </ScrollView>

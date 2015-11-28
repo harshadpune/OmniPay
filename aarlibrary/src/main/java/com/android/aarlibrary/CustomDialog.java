@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.aarlibrary.nfcreader.TagViewer;
+import com.android.aarlibrary.paypal.PaypalLandingActivity;
 import com.android.aarlibrary.ui.PayUMoney;
 
 /**
@@ -19,6 +20,7 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
     private final Context appContext;
     private ImageView ivPayU;
     private ImageView ivPayPal;
+    private ImageView ivPayNFC;
 
     public CustomDialog(Context context) {
         super(context);
@@ -53,11 +55,15 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
     private void init(){
         ivPayU = (ImageView) findViewById(R.id.ivPayU);
         ivPayPal = (ImageView) findViewById(R.id.ivPayPal);
+        ivPayNFC = (ImageView) findViewById(R.id.ivPayNFC);
+
+        setTitle("Choose your payment option");
     }
 
     private void setListeners() {
         ivPayU.setOnClickListener(this);
         ivPayPal.setOnClickListener(this);
+        ivPayNFC.setOnClickListener(this);
     }
 
     @Override
@@ -72,6 +78,12 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         }
 
         if(i == R.id.ivPayPal){
+            Intent payPalIntent = new Intent(appContext, PaypalLandingActivity.class);
+            appContext.startActivity(payPalIntent);
+            dismiss();
+        }
+
+        if(i == R.id.ivPayNFC){
             Intent tagViewer = new Intent(appContext, TagViewer.class);
             appContext.startActivity(tagViewer);
             dismiss();

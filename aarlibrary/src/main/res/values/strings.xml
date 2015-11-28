@@ -50,7 +50,7 @@
     <string name="title_activity_netbanking">NetbankingActivity</string>
 
     <string name="title_activity_other_options">OtherOptionsActivity</string>
-
+    <string name="title_activity_payment_landing_screen">PaymentLandingScreen</string>
 
 
 </resources>

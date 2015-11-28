@@ -23,7 +23,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.*;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -33,16 +35,18 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
-import android.nfc.tech.MifareClassic;
-import android.nfc.tech.MifareUltralight;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.Settings;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.aarlibrary.CardDetails;
-import com.android.aarlibrary.PaymentHandler;
+import com.android.aarlibrary.OmniPayButton;
 import com.android.aarlibrary.R;
 import com.android.aarlibrary.nfcreader.record.ParsedNdefRecord;
 
@@ -51,7 +55,7 @@ import org.w3c.dom.Text;
 /**
  * An {@link ActionBarActivity} which handles a broadcast of a new tag that the device just discovered.
  */
-public class TagViewer extends ActionBarActivity {
+public class TagViewer extends ActionBarActivity implements View.OnClickListener {
 
     private static final DateFormat TIME_FORMAT = SimpleDateFormat.getDateTimeInstance();
     private LinearLayout mTagContent;
@@ -68,6 +72,11 @@ public class TagViewer extends ActionBarActivity {
     private final String HTAG = "1443619815";
     private final String NTAG = "36073274803562244";
     private final String STAG = "36097286890293508";
+    private ImageView ivContactless;
+    private LinearLayout llCard;
+    private Button btnPay;
+    private TextView tagViewerText;
+    private EditText etCvv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +86,14 @@ public class TagViewer extends ActionBarActivity {
         tvCardNumber = (TextView) findViewById(R.id.tvCardNumber);
         tvExpDt = (TextView) findViewById(R.id.tvExpDt);
         tvCardName = (TextView) findViewById(R.id.tvCardName);
+        tagViewerText = (TextView) findViewById(R.id.tag_viewer_text);
+
+        ivContactless = (ImageView) findViewById(R.id.iv_contactless);
+        llCard = (LinearLayout) findViewById(R.id.llCard);
+        etCvv = (EditText) findViewById(R.id.etCvv);
+        btnPay = (Button) findViewById(R.id.btnPay);
+        btnPay.setOnClickListener(this);
+        
 
         mTagContent = (LinearLayout) findViewById(R.id.list);
         resolveIntent(getIntent());
@@ -199,6 +216,15 @@ public class TagViewer extends ActionBarActivity {
             tvCardNumber.setText("" + cardDetails.getCardNumber());
             tvCardName.setText("" + cardDetails.getCardName());
             tvExpDt.setText("" + cardDetails.getExpDate());
+            llCard.setVisibility(View.VISIBLE);
+            btnPay.setVisibility(View.VISIBLE);
+            ivContactless.setVisibility(View.GONE);
+            tagViewerText.setVisibility(View.GONE);
+        }else{
+            llCard.setVisibility(View.GONE);
+            btnPay.setVisibility(View.GONE);
+            ivContactless.setVisibility(View.VISIBLE);
+            tagViewerText.setVisibility(View.VISIBLE);
         }
 
 
@@ -378,5 +404,30 @@ public class TagViewer extends ActionBarActivity {
     public void onNewIntent(Intent intent) {
         setIntent(intent);
         resolveIntent(intent);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if(i == R.id.btnPay){
+            Log.d("TAG","-----------Clicked");
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(etCvv.getWindowToken(), 0);
+
+            new AlertDialog.Builder(TagViewer.this)
+                    .setTitle("Success!")
+                    .setMessage("Your payment is successful!")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            finish();
+                        }
+                    })
+                    .show();
+        }
+
+
     }
 }

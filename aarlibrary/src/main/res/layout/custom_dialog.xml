@@ -10,22 +10,43 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="20dip">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dip"
                 android:id="@+id/ivPayU"
                 android:layout_weight="1"
                 android:background="@drawable/pay_u"/>
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dip"
                 android:id="@+id/ivPayPal"
                 android:layout_weight="1"
                 android:background="@drawable/pay_pal"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dip">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dip"
+                android:id="@+id/imageView"
+                android:layout_weight="1"
+                android:background="@drawable/pay_u" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dip"
+                android:id="@+id/ivPayNFC"
+                android:layout_weight="1"
+                android:background="@drawable/pay_pal" />
         </LinearLayout>
 
     </LinearLayout>
