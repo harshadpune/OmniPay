@@ -12,4 +12,45 @@
     <string name="nfc_disabled">NFC is not enabled. Please go to the wireless settings to enable it.</string>
     <string name="menu_main_clear_title">Clear all</string>
 
+
+    <!-- UI -->
+
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="splash_omni_pay_text">Omni-Pay</string>
+    <string name="splash_marquee_texts">For all pay, there is only one.  Ease for customers.  Minefield merchants</string>
+
+    <!--Products string alues-->
+    <string name="title_activity_products">Products</string>
+    <string name="search_product_hint_text">Browse your products here</string>
+    <string name="load_shopping_cart_button_text">Load shopping cart</string>
+    <string name="buy_now_button_text">Buy now</string>
+    <string name="product_name_PowerBank">Power bank</string>
+    <string name="product_price_PowerBank">Price: Rs.1098</string>
+    <string name="product_qty_PowerBank">Qty:</string>
+    <string name="product_name_Nexus5s">Nexus 5s</string>
+    <string name="product_price_Nexus5s">Price: Rs.39,000</string>
+    <string name="product_qty_Nexus5s">Qty:</string>
+    <string name="product_name_AndroidWear">Android wear</string>
+    <string name="product_price_AndroidWear">Price: Rs.60,000</string>
+    <string name="product_qty_AndroidWear">Qty:</string>
+    <string name="product_name_DslrCamera">DSLR</string>
+    <string name="product_price_DslrCamera">Price: Rs.35,000</string>
+    <string name="product_qty_DslrCamera">Qty:</string>
+    <string name="title_activity_cart_product_details">Cart summary</string>
+
+    <!--Cart product details string alues-->
+    <string name="omni_pay_button">Omni pay</string>
+
+    <!--Omni pay fragment string values-->
+    <string name="netbanking">Netbanking</string>
+    <string name="other_options">Other options</string>
+    <string name="dialog_title">Please tap on anyone payment schemes or other options.</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="title_activity_netbanking">NetbankingActivity</string>
+
+    <string name="title_activity_other_options">OtherOptionsActivity</string>
+
+
+
 </resources>

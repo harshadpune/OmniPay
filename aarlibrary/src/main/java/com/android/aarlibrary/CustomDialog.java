@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.aarlibrary.nfcreader.TagViewer;
+import com.android.aarlibrary.ui.PayUMoney;
 
 /**
  * Created by HARSHAD on 26/11/2015.
@@ -66,6 +67,7 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
             Intent intentPayU = new Intent(appContext,PayUMoney.class);
             appContext.startActivity(intentPayU);
             Log.d("TAG", "ID="+PaymentHandler.getInstance().getPaymentId()+" Amount="+PaymentHandler.getInstance().getPaymentAmount());
+
             dismiss();
         }
 

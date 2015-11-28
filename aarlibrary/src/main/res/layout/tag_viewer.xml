@@ -30,5 +30,66 @@
             android:padding="6dp"
             android:text="Scan your Tag here!!!!"
              />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="50dip"
+                android:paddingTop="20dip"
+                android:paddingBottom="20dip"
+                android:background="#bdd7f4"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bank Name"
+                    android:id="@+id/tvBankName"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="30dip"
+                    android:textSize="18dip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XXXX XXXX XXXX XXXX"
+                    android:id="@+id/tvCardNumber"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dip" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dip">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Valid upto"
+                        android:id="@+id/lableExp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MM/YY"
+                        android:id="@+id/tvExpDt"
+                        android:layout_marginLeft="10dip" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:id="@+id/tvCardName"
+                    android:layout_marginTop="10dip" />
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>

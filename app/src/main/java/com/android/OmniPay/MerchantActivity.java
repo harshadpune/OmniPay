@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,14 +18,24 @@ import com.android.aarlibrary.PaymentHandler;
 
 public class MerchantActivity extends ActionBarActivity implements OnOmniPayClickListener {
 
-    private OmniPayButton btnOmniPay;
+    private OmniPayButton omniPayButton;
+    private CheckBox mCbProduct1, mCbProduct2;
+    private TextView mProductName1, mProdcutName2;
+    private TextView mPrice1, mPrice2;
+    private TextView mTotalPrice1, mTotalPrice2;
+    private TextView mTotalPrice;
+    private Button mPlus1, mMinus1, mPlus2, mMinus2;
+    private TextView mQty1, mQty2;
+    private int qty1, qty2, price1, price2, totalPrice1, totalPrice2, totalPrice;
+    private LinearLayout mTotalPriceProduct1LinearLayout, mTotalPriceProduct2LinearLayout, mTotalPriceProductLinearLayout;
+    private String toastText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchant);
-        btnOmniPay = (OmniPayButton) findViewById(R.id.btnOmniPay);
-        btnOmniPay.setOnOmniPayClickListener(this);
+        omniPayButton = (OmniPayButton) findViewById(R.id.btnOmniPay);
+        omniPayButton.setOnOmniPayClickListener(this);
     }
 
 

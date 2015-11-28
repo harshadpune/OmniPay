@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_text">#000000</color>
+    <color name="disabled_green_button">#bbff99</color>
+    <color name="enabled_green_button">#339900</color>
+    <color name="grey_separator">#333333</color>
+    <color name="light_blue">#1587F1</color>
+    <color name="dark_blue">#528FFB</color>
+    <color name="pink">#ED43EB</color>
+</resources>

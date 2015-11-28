@@ -41,9 +41,12 @@ import android.provider.Settings;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.aarlibrary.CardDetails;
 import com.android.aarlibrary.PaymentHandler;
 import com.android.aarlibrary.R;
 import com.android.aarlibrary.nfcreader.record.ParsedNdefRecord;
+
+import org.w3c.dom.Text;
 
 /**
  * An {@link ActionBarActivity} which handles a broadcast of a new tag that the device just discovered.
@@ -58,11 +61,23 @@ public class TagViewer extends ActionBarActivity {
     private NdefMessage mNdefPushMessage;
 
     private AlertDialog mDialog;
+    private TextView tvBankName;
+    private TextView tvCardNumber;
+    private TextView tvExpDt;
+    private TextView tvCardName;
+    private final String HTAG = "1443619815";
+    private final String NTAG = "36073274803562244";
+    private final String STAG = "36097286890293508";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tag_viewer);
+        tvBankName = (TextView) findViewById(R.id.tvBankName);
+        tvCardNumber = (TextView) findViewById(R.id.tvCardNumber);
+        tvExpDt = (TextView) findViewById(R.id.tvExpDt);
+        tvCardName = (TextView) findViewById(R.id.tvCardName);
+
         mTagContent = (LinearLayout) findViewById(R.id.list);
         resolveIntent(getIntent());
 
@@ -174,70 +189,104 @@ public class TagViewer extends ActionBarActivity {
         StringBuilder sb = new StringBuilder();
         Tag tag = (Tag) p;
         byte[] id = tag.getId();
-        sb.append("Tag ID (hex): ").append(getHex(id)).append("\n");
-        sb.append("Tag ID (dec): ").append(getDec(id)).append("\n");
-        sb.append("ID (reversed): ").append(getReversed(id)).append("\n\n");
+//        sb.append("Tag ID (hex): ").append(getHex(id)).append("\n");
+//        sb.append("Tag ID (dec): ").append(getDec(id)).append("\n");
+//        sb.append("ID (reversed): ").append(getReversed(id)).append("\n\n");
 
-        sb.append("Payment Id : ").append(PaymentHandler.getInstance().getPaymentId()).append("\n");
-        sb.append("Amount     : ").append(PaymentHandler.getInstance().getPaymentAmount()).append("\n\n");
+        CardDetails cardDetails = getDummyResponse(""+getDec(id));
+        if(cardDetails!=null) {
+            tvBankName.setText("" + cardDetails.getBankName());
+            tvCardNumber.setText("" + cardDetails.getCardNumber());
+            tvCardName.setText("" + cardDetails.getCardName());
+            tvExpDt.setText("" + cardDetails.getExpDate());
+        }
+
+
+//        sb.append("Payment Id : ").append(PaymentHandler.getInstance().getPaymentId()).append("\n");
+//        sb.append("Amount     : ").append(PaymentHandler.getInstance().getPaymentAmount()).append("\n\n");
 
         String prefix = "android.nfc.tech.";
-        sb.append("Technologies: ");
-        for (String tech : tag.getTechList()) {
-            sb.append(tech.substring(prefix.length()));
-            sb.append(", ");
-        }
-        sb.delete(sb.length() - 2, sb.length());
-        for (String tech : tag.getTechList()) {
-            if (tech.equals(MifareClassic.class.getName())) {
-                sb.append('\n');
-                MifareClassic mifareTag = MifareClassic.get(tag);
-                String type = "Unknown";
-                switch (mifareTag.getType()) {
-                case MifareClassic.TYPE_CLASSIC:
-                    type = "Classic";
-                    break;
-                case MifareClassic.TYPE_PLUS:
-                    type = "Plus";
-                    break;
-                case MifareClassic.TYPE_PRO:
-                    type = "Pro";
-                    break;
-                }
-                sb.append("Mifare Classic type: ");
-                sb.append(type);
-                sb.append('\n');
-
-                sb.append("Mifare size: ");
-                sb.append(mifareTag.getSize() + " bytes");
-                sb.append('\n');
-
-                sb.append("Mifare sectors: ");
-                sb.append(mifareTag.getSectorCount());
-                sb.append('\n');
-
-                sb.append("Mifare blocks: ");
-                sb.append(mifareTag.getBlockCount());
-            }
-
-            if (tech.equals(MifareUltralight.class.getName())) {
-                sb.append('\n');
-                MifareUltralight mifareUlTag = MifareUltralight.get(tag);
-                String type = "Unknown";
-                switch (mifareUlTag.getType()) {
-                case MifareUltralight.TYPE_ULTRALIGHT:
-                    type = "Ultralight";
-                    break;
-                case MifareUltralight.TYPE_ULTRALIGHT_C:
-                    type = "Ultralight C";
-                    break;
-                }
-                sb.append("Mifare Ultralight type: ");
-                sb.append(type);
-            }
-        }
+//        sb.append("Technologies: ");
+//        for (String tech : tag.getTechList()) {
+//            sb.append(tech.substring(prefix.length()));
+//            sb.append(", ");
+//        }
+//        sb.delete(sb.length() - 2, sb.length());
+//        for (String tech : tag.getTechList()) {
+//            if (tech.equals(MifareClassic.class.getName())) {
+//                sb.append('\n');
+//                MifareClassic mifareTag = MifareClassic.get(tag);
+//                String type = "Unknown";
+//                switch (mifareTag.getType()) {
+//                case MifareClassic.TYPE_CLASSIC:
+//                    type = "Classic";
+//                    break;
+//                case MifareClassic.TYPE_PLUS:
+//                    type = "Plus";
+//                    break;
+//                case MifareClassic.TYPE_PRO:
+//                    type = "Pro";
+//                    break;
+//                }
+//                sb.append("Mifare Classic type: ");
+//                sb.append(type);
+//                sb.append('\n');
+//
+//                sb.append("Mifare size: ");
+//                sb.append(mifareTag.getSize() + " bytes");
+//                sb.append('\n');
+//
+//                sb.append("Mifare sectors: ");
+//                sb.append(mifareTag.getSectorCount());
+//                sb.append('\n');
+//
+//                sb.append("Mifare blocks: ");
+//                sb.append(mifareTag.getBlockCount());
+//            }
+//
+//            if (tech.equals(MifareUltralight.class.getName())) {
+//                sb.append('\n');
+//                MifareUltralight mifareUlTag = MifareUltralight.get(tag);
+//                String type = "Unknown";
+//                switch (mifareUlTag.getType()) {
+//                case MifareUltralight.TYPE_ULTRALIGHT:
+//                    type = "Ultralight";
+//                    break;
+//                case MifareUltralight.TYPE_ULTRALIGHT_C:
+//                    type = "Ultralight C";
+//                    break;
+//                }
+//                sb.append("Mifare Ultralight type: ");
+//                sb.append(type);
+//            }
+//        }
 
         return sb.toString();
+    }
+
+    private CardDetails getDummyResponse(String tagId) {
+        CardDetails cardDetails = new CardDetails();
+        if(tagId.equalsIgnoreCase(HTAG)){
+            cardDetails.setBankName("Barclays");
+            cardDetails.setCardNumber("4659 0216 6785 7066");
+            cardDetails.setCardName("H D Bongale");
+            cardDetails.setExpDate("07/19");
+        }else if(tagId.equalsIgnoreCase(STAG)){
+            cardDetails.setBankName("ICICI");
+            cardDetails.setCardNumber("0216 3264 8749 3659");
+            cardDetails.setCardName("Shruti Sinha");
+            cardDetails.setExpDate("05/18");
+        }else if(tagId.equalsIgnoreCase(NTAG)){
+            cardDetails.setBankName("State Bank of India");
+            cardDetails.setCardNumber("3546 6598 2458 6998");
+            cardDetails.setCardName("Neha Agrawal");
+            cardDetails.setExpDate("04/17");
+        }
+        else{
+            cardDetails = null;
+        }
+
+        return cardDetails;
     }
 
     private String getHex(byte[] bytes) {
@@ -291,10 +340,10 @@ public class TagViewer extends ActionBarActivity {
         for (int i = 0; i < size; i++) {
             TextView timeView = new TextView(this);
             timeView.setText(TIME_FORMAT.format(now));
-            content.addView(timeView, 0);
+//            content.addView(timeView, 0);
             ParsedNdefRecord record = records.get(i);
-            content.addView(record.getView(this, inflater, content, i), 1 + i);
-            content.addView(inflater.inflate(R.layout.tag_divider, content, false), 2 + i);
+//            content.addView(record.getView(this, inflater, content, i), 1 + i);
+//            content.addView(inflater.inflate(R.layout.tag_divider, content, false), 2 + i);
         }
     }
 

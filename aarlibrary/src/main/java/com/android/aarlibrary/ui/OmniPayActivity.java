@@ -1,4 +1,4 @@
-package com.android.aarlibrary;
+package com.android.aarlibrary.ui;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.android.aarlibrary.R;
 
 
 public class OmniPayActivity extends ActionBarActivity {
