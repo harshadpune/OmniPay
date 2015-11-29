@@ -37,7 +37,7 @@ public class MerchantSettings extends ActionBarActivity implements View.OnClickL
        cb1.setChecked(spf.getBoolean("isPayPalEnabled",true));
        cb2.setChecked(spf.getBoolean("isPayUEnabled",true));
        cb3.setChecked(spf.getBoolean("isNFCEnabled",true));
-       cb4.setChecked(spf.getBoolean("isCardEnabled",true));
+       cb4.setChecked(spf.getBoolean("isScanEnabled",true));
     }
 
     @Override
