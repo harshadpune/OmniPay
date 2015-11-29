@@ -17,6 +17,7 @@ public class PaymentHandler {
     private String paymentAmount;
     private OnOmniPaymentListener onOmniPaymentListener;
 
+
     public String getPaymentAmount() {
         return paymentAmount;
     }

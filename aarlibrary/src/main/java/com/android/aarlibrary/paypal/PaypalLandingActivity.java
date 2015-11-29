@@ -107,7 +107,7 @@ public class PaypalLandingActivity extends ActionBarActivity {
     }
     
     private PayPalPayment getThingToBuy(String paymentIntent) {
-        return new PayPalPayment(new BigDecimal(""+(Double.parseDouble(PaymentHandler.getInstance().getPaymentAmount())/66)), "USD", ""+PaymentHandler.getInstance().getPaymentId(),
+        return new PayPalPayment(new BigDecimal(""+(Double.parseDouble(PaymentHandler.getInstance().getPaymentAmount())/66)), "USD", "Payment Id: "+PaymentHandler.getInstance().getPaymentId(),
                 paymentIntent);
     }
     

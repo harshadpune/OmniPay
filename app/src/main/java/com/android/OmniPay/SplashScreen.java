@@ -10,10 +10,13 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SplashScreen extends Activity {
 
     private ImageView mRotatingLogo;
+    private TextView mMaqueeSplashTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +30,7 @@ public class SplashScreen extends Activity {
                 SplashScreen.this.startActivity(productIntent);
                 SplashScreen.this.finish();
             }
-        }, 5000);
+        }, 4000);
 
         initComponents();
         addListeners();
@@ -43,7 +46,7 @@ public class SplashScreen extends Activity {
 //        rotate.setInterpolator(new LinearInterpolator());
 //
 //        rotate.setRepeatCount(Animation.INFINITE);
-        Animation rotate = new AnimationUtils().loadAnimation(this,R.anim.rotate_anim);
+        Animation rotate = new AnimationUtils().loadAnimation(this, R.anim.rotate_anim);
         rotate.setRepeatCount(Animation.INFINITE);
         rotate.setInterpolator(new LinearInterpolator());
         mRotatingLogo.startAnimation(rotate);
@@ -55,7 +58,14 @@ public class SplashScreen extends Activity {
 
     private void initComponents() {
         mRotatingLogo = (ImageView) findViewById(R.id.ivSplashPayIcon);
+        mMaqueeSplashTextView = (TextView) findViewById(R.id.tvSplashMarquee);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                mMaqueeSplashTextView.animate().x(100).setDuration(8000).setStartDelay(3000);
+                mMaqueeSplashTextView.setSelected(true);
+            }
+        }, 2000);
     }
-
 
 }

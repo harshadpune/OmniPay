@@ -6,6 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:orientation="vertical">
 
 
@@ -13,12 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
-            android:background="@color/actionbar_blue"/>
+            android:background="@color/actionbar_blue" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dip">
+            android:padding="10dip">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,15 +31,15 @@
                     android:id="@+id/ivPayPal"
                     android:layout_width="150dp"
                     android:layout_height="50dip"
-                    android:layout_weight="1"
                     android:layout_margin="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/pay_pal" />
 
                 <ImageView
                     android:id="@+id/ivPayU"
                     android:layout_width="150dp"
-                    android:layout_margin="5dp"
                     android:layout_height="50dip"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/payumoney" />
 
@@ -46,24 +48,54 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:weightSum="2"
-                android:layout_marginTop="10dp">
+                android:visibility="visible">
 
-                <ImageView
-                    android:id="@+id/ivPayNFC"
-                    android:layout_width="150dp"
-                    android:layout_margin="5dp"
-                    android:layout_height="50dip"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/conatctlesslogo" />
+                    android:id="@+id/llNFC"
+                    android:visibility="visible">
 
-                <ImageView
-                    android:id="@+id/ivScanCard"
-                    android:layout_width="150dp"
-                    android:layout_height="50dip"
-                    android:layout_margin="5dp"
+                    <ImageView
+                        android:id="@+id/ivPayNFCLogo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dip"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/conatctlessicon" />
+
+                    <ImageView
+                        android:id="@+id/ivPayNFC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dip"
+                        android:background="@drawable/conatctlesslogo" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/scancard" />
+                    android:id="@+id/llCard">
+
+                    <ImageView
+                        android:id="@+id/ivScanCardIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/cards" />
+
+                    <ImageView
+                        android:id="@+id/ivScanCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/scanacard" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
