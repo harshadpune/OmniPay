@@ -1,14 +1,10 @@
 package com.android.aarlibrary.ui;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.widget.TextView;
 
-import com.android.aarlibrary.OmniPayButton;
-import com.android.aarlibrary.PaymentHandler;
+import com.android.aarlibrary.dao.PaymentHandler;
 import com.android.aarlibrary.R;
 //import com.payu.india.Model.PaymentParams;
 //import com.payu.india.Model.PayuHashes;

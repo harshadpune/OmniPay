@@ -69,8 +69,8 @@
                     android:layout_marginTop="20dip"
                     android:textStyle="bold"
                     android:textSize="20dip"
-                    android:layout_gravity="right"
-                    android:gravity="center_horizontal" />
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -112,13 +112,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CVV"
-                        android:id="@+id/tvCvvLabel" />
+                        android:id="@+id/tvCvvLabel"
+                        />
 
                     <EditText
                         android:layout_width="60dip"
                         android:layout_height="wrap_content"
                         android:id="@+id/etCvv"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:imeOptions="actionDone"
+                        android:maxLength="3"/>
 
                 </LinearLayout>
             </LinearLayout>

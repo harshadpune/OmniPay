@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.aarlibrary.dao.PaymentHandler;
 import com.android.aarlibrary.R;
 import com.paypal.android.sdk.payments.PayPalAuthorization;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -72,6 +73,9 @@ public class PaypalLandingActivity extends ActionBarActivity {
         Intent intent = new Intent(this, PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         startService(intent);
+
+        Button buyIt = (Button) findViewById(R.id.buyItBtn);
+        buyIt.performClick();
     }
 
     public void onBuyPressed(View pressed) {
@@ -101,7 +105,7 @@ public class PaypalLandingActivity extends ActionBarActivity {
     }
     
     private PayPalPayment getThingToBuy(String paymentIntent) {
-        return new PayPalPayment(new BigDecimal("1.75"), "USD", "sample item",
+        return new PayPalPayment(new BigDecimal(""+(Double.parseDouble(PaymentHandler.getInstance().getPaymentAmount())/66)), "USD", ""+PaymentHandler.getInstance().getPaymentId(),
                 paymentIntent);
     }
     
@@ -204,6 +208,7 @@ public class PaypalLandingActivity extends ActionBarActivity {
                                 "PaymentConfirmation info received from PayPal", Toast.LENGTH_LONG)
                                 .show();
 
+
                     } catch (JSONException e) {
                         Log.e(TAG, "an extremely unlikely failure occurred: ", e);
                     }
@@ -215,6 +220,7 @@ public class PaypalLandingActivity extends ActionBarActivity {
                         TAG,
                         "An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
             }
+            finish();
         } else if (requestCode == REQUEST_CODE_FUTURE_PAYMENT) {
             if (resultCode == Activity.RESULT_OK) {
                 PayPalAuthorization auth =

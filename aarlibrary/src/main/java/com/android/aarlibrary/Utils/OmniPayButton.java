@@ -1,11 +1,13 @@
-package com.android.aarlibrary;
+package com.android.aarlibrary.Utils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.android.aarlibrary.dao.PaymentHandler;
+import com.android.aarlibrary.listeners.OnOmniPayClickListener;
+import com.android.aarlibrary.listeners.OnOmniPaymentListener;
 
 /**
  * Created by HARSHAD on 25/11/2015.
@@ -54,5 +56,9 @@ public class OmniPayButton extends Button implements View.OnClickListener {
 
     public void setOnOmniPayClickListener(OnOmniPayClickListener listener){
         this.listener = listener;
+    }
+
+    public void setOnOmniPaymentListener(OnOmniPaymentListener onOmniPaymentListener){
+        PaymentHandler.getInstance().setOnOmniPaymentListener(onOmniPaymentListener);
     }
 }

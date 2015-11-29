@@ -22,8 +22,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.*;
@@ -45,12 +46,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.aarlibrary.CardDetails;
-import com.android.aarlibrary.OmniPayButton;
+import com.android.aarlibrary.Utils.Utils;
+import com.android.aarlibrary.dao.CardDetails;
+import com.android.aarlibrary.dao.PaymentHandler;
+import com.android.aarlibrary.dao.PaymentSuccessDetails;
 import com.android.aarlibrary.R;
 import com.android.aarlibrary.nfcreader.record.ParsedNdefRecord;
-
-import org.w3c.dom.Text;
 
 /**
  * An {@link ActionBarActivity} which handles a broadcast of a new tag that the device just discovered.
@@ -411,23 +412,44 @@ public class TagViewer extends ActionBarActivity implements View.OnClickListener
     public void onClick(View v) {
         int i = v.getId();
         if(i == R.id.btnPay){
-            Log.d("TAG","-----------Clicked");
+            Log.d("TAG", "-----------Clicked");
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(etCvv.getWindowToken(), 0);
 
-            new AlertDialog.Builder(TagViewer.this)
-                    .setTitle("Success!")
-                    .setMessage("Your payment is successful!")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            finish();
-                        }
-                    })
-                    .show();
+            final ProgressDialog pd = ProgressDialog.show(TagViewer.this,null,"Please wait...");
+            pd.show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    pd.dismiss();
+                    submitDetails();
+                }
+            }, 3000);
+
         }
 
 
+    }
+
+    public void submitDetails(){
+
+        new AlertDialog.Builder(TagViewer.this)
+                .setTitle("Successful")
+                .setMessage("Your payment is successful!")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        PaymentSuccessDetails paymentSuccessDetails = new PaymentSuccessDetails();
+                        paymentSuccessDetails.setPaymentServiceProvider("NFC");
+                        paymentSuccessDetails.setPaymentConfirmationId("NFC_Confirm_1231");
+                        paymentSuccessDetails.setPaymentAmount("" + PaymentHandler.getInstance().getPaymentAmount());
+                        paymentSuccessDetails.setDateAndTime(""+ Utils.getCurrentDateAndTime());
+                        PaymentHandler.getInstance().getOnOmniPaymentListener().getPaymentInfo(paymentSuccessDetails);
+                        finish();
+                    }
+                })
+                .show();
     }
 }

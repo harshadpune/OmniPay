@@ -1,4 +1,4 @@
-package com.android.aarlibrary;
+package com.android.aarlibrary.Utils;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.android.aarlibrary.R;
+import com.android.aarlibrary.dao.PaymentHandler;
 import com.android.aarlibrary.nfcreader.TagViewer;
 import com.android.aarlibrary.paypal.PaypalLandingActivity;
 import com.android.aarlibrary.ui.PayUMoney;
@@ -58,6 +60,9 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         ivPayNFC = (ImageView) findViewById(R.id.ivPayNFC);
 
         setTitle("Choose your payment option");
+
+//        ContextThemeWrapper themeWrapper = new ContextThemeWrapper(appContext,android.R.style.Theme_Holo_Light_Dialog_NoActionBar);
+//        Builder builder = new Builder(themeWrapper);
     }
 
     private void setListeners() {
@@ -72,7 +77,7 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         if (i == R.id.ivPayU) {
             Intent intentPayU = new Intent(appContext,PayUMoney.class);
             appContext.startActivity(intentPayU);
-            Log.d("TAG", "ID="+PaymentHandler.getInstance().getPaymentId()+" Amount="+PaymentHandler.getInstance().getPaymentAmount());
+            Log.d("TAG", "ID="+ PaymentHandler.getInstance().getPaymentId()+" Amount="+PaymentHandler.getInstance().getPaymentAmount());
 
             dismiss();
         }

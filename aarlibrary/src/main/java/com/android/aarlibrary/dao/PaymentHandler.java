@@ -1,4 +1,6 @@
-package com.android.aarlibrary;
+package com.android.aarlibrary.dao;
+
+import com.android.aarlibrary.listeners.OnOmniPaymentListener;
 
 /**
  * Created by HARSHAD on 26/11/2015.
@@ -13,6 +15,7 @@ public class PaymentHandler {
     }
     private String paymentId;
     private String paymentAmount;
+    private OnOmniPaymentListener onOmniPaymentListener;
 
     public String getPaymentAmount() {
         return paymentAmount;
@@ -28,5 +31,13 @@ public class PaymentHandler {
 
     public void setPaymentId(String paymentId) {
         this.paymentId = paymentId;
+    }
+
+    public OnOmniPaymentListener getOnOmniPaymentListener() {
+        return onOmniPaymentListener;
+    }
+
+    public void setOnOmniPaymentListener(OnOmniPaymentListener onOmniPaymentListener) {
+        this.onOmniPaymentListener = onOmniPaymentListener;
     }
 }

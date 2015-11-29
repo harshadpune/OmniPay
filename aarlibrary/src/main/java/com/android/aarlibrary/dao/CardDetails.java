@@ -1,4 +1,4 @@
-package com.android.aarlibrary;
+package com.android.aarlibrary.dao;
 
 /**
  * Created by HARSHAD on 28/11/2015.
