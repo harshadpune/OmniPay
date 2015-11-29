@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.aarlibrary.Utils.Utils;
 import com.android.aarlibrary.dao.PaymentHandler;
 import com.android.aarlibrary.R;
+import com.android.aarlibrary.dao.PaymentSuccessDetails;
 import com.paypal.android.sdk.payments.PayPalAuthorization;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalFuturePaymentActivity;
@@ -200,14 +202,21 @@ public class PaypalLandingActivity extends ActionBarActivity {
                          * See https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
                          * for more details.
                          *
+                         *
                          * For sample mobile backend interactions, see
                          * https://github.com/paypal/rest-api-sdk-python/tree/master/samples/mobile_backend
                          */
-                        Toast.makeText(
-                                getApplicationContext(),
-                                "PaymentConfirmation info received from PayPal", Toast.LENGTH_LONG)
-                                .show();
-
+//                        Toast.makeText(
+//                                getApplicationContext(),
+//                                "PaymentConfirmation info received from PayPal", Toast.LENGTH_LONG)
+//                                .show();
+                        PaymentSuccessDetails paymentSuccessDetails = new PaymentSuccessDetails();
+                        paymentSuccessDetails.setPaymentServiceProvider("PayPal");
+                        paymentSuccessDetails.setPaymentConfirmationId("PayPal_Confirm_12121212");
+                        paymentSuccessDetails.setPaymentAmount("" + PaymentHandler.getInstance().getPaymentAmount());
+                        paymentSuccessDetails.setDateAndTime(""+ Utils.getCurrentDateAndTime());
+                        PaymentHandler.getInstance().getOnOmniPaymentListener().getPaymentInfo(paymentSuccessDetails);
+                        finish();
 
                     } catch (JSONException e) {
                         Log.e(TAG, "an extremely unlikely failure occurred: ", e);

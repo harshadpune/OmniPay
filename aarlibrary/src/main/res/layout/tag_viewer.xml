@@ -41,11 +41,11 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="200dip"
                 android:layout_margin="20dip"
                 android:paddingTop="20dip"
                 android:paddingBottom="20dip"
-                android:background="@drawable/square_background"
+                android:background="@drawable/debit_card"
                 android:paddingLeft="20dip"
                 android:paddingRight="20dip"
                 android:visibility="gone"
@@ -59,30 +59,32 @@
                     android:layout_gravity="right"
                     android:layout_marginRight="30dip"
                     android:textSize="18dip"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="XXXX XXXX XXXX XXXX"
                     android:id="@+id/tvCardNumber"
-                    android:layout_marginTop="20dip"
                     android:textStyle="bold"
                     android:textSize="20dip"
                     android:gravity="center_horizontal"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_marginTop="35dip"
+                    android:textColor="@android:color/white" />
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dip">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Valid upto"
-                        android:id="@+id/lableExp" />
+                        android:id="@+id/lableExp"
+                        android:textColor="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -90,42 +92,55 @@
                         android:text="MM/YY"
                         android:id="@+id/tvExpDt"
                         android:layout_marginLeft="10dip"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white" />
 
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:id="@+id/tvCardName"
-                    android:layout_marginTop="10dip"
-                    android:textStyle="bold"
-                    android:textSize="16dip" />
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CVV"
-                        android:id="@+id/tvCvvLabel"
-                        />
+                        android:layout_height="fill_parent"
+                        android:text="Name"
+                        android:id="@+id/tvCardName"
+                        android:textStyle="bold"
+                        android:textSize="16dip"
+                        android:textColor="@android:color/white"
+                        android:gravity="center_vertical" />
 
-                    <EditText
-                        android:layout_width="60dip"
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etCvv"
-                        android:layout_marginLeft="10dip"
-                        android:inputType="phone"
-                        android:lines="1"
-                        android:imeOptions="actionDone"
-                        android:maxLength="3"/>
+                        android:gravity="right"
+                        android:layout_marginLeft="15dip">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CVV"
+                            android:id="@+id/tvCvvLabel"
+                            android:textColor="@android:color/white" />
+
+                        <EditText
+                            android:layout_width="60dip"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etCvv"
+                            android:inputType="phone"
+                            android:lines="1"
+                            android:imeOptions="actionDone"
+                            android:maxLength="3"
+                            android:layout_marginLeft="10dip"
+                            android:textColor="@android:color/white" />
+
+                    </LinearLayout>
                 </LinearLayout>
+
             </LinearLayout>
 
             <Button

@@ -1,53 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/actionbar_blue"/>
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:padding="20dip">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dip"
-                android:id="@+id/ivPayU"
-                android:layout_weight="1"
-                android:background="@drawable/pay_u"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dip"
-                android:id="@+id/ivPayPal"
-                android:layout_weight="1"
-                android:background="@drawable/pay_pal"/>
+                <ImageView
+                    android:id="@+id/ivPayPal"
+                    android:layout_width="150dp"
+                    android:layout_height="50dip"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/pay_pal" />
+
+                <ImageView
+                    android:id="@+id/ivPayU"
+                    android:layout_width="150dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="50dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/payumoney" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/ivPayNFC"
+                    android:layout_width="150dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="50dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/conatctlesslogo" />
+
+                <ImageView
+                    android:id="@+id/ivScanCard"
+                    android:layout_width="150dp"
+                    android:layout_height="50dip"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/scancard" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dip">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dip"
-                android:id="@+id/imageView"
-                android:layout_weight="1"
-                android:background="@drawable/pay_u" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dip"
-                android:id="@+id/ivPayNFC"
-                android:layout_weight="1"
-                android:background="@drawable/pay_pal" />
-        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>

@@ -23,6 +23,7 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
     private ImageView ivPayU;
     private ImageView ivPayPal;
     private ImageView ivPayNFC;
+    private ImageView ivScanCard;
 
     public CustomDialog(Context context) {
         super(context);
@@ -58,8 +59,9 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         ivPayU = (ImageView) findViewById(R.id.ivPayU);
         ivPayPal = (ImageView) findViewById(R.id.ivPayPal);
         ivPayNFC = (ImageView) findViewById(R.id.ivPayNFC);
+        ivScanCard = (ImageView) findViewById(R.id.ivScanCard);
 
-        setTitle("Choose your payment option");
+        setTitle("Payment Options");
 
 //        ContextThemeWrapper themeWrapper = new ContextThemeWrapper(appContext,android.R.style.Theme_Holo_Light_Dialog_NoActionBar);
 //        Builder builder = new Builder(themeWrapper);
@@ -69,6 +71,7 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         ivPayU.setOnClickListener(this);
         ivPayPal.setOnClickListener(this);
         ivPayNFC.setOnClickListener(this);
+        ivScanCard.setOnClickListener(this);
     }
 
     @Override
@@ -91,6 +94,12 @@ public class CustomDialog extends Dialog implements DialogInterface.OnClickListe
         if(i == R.id.ivPayNFC){
             Intent tagViewer = new Intent(appContext, TagViewer.class);
             appContext.startActivity(tagViewer);
+            dismiss();
+        }
+
+        if(i == R.id.ivScanCard){
+//            Intent scan = new Intent(appContext, ScanCardActivity.class);
+//            appContext.startActivity(scan);
             dismiss();
         }
     }
